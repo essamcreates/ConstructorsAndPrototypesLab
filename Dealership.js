@@ -11,7 +11,7 @@ const Dealership = function(dealershipName, capacity){
     }
     
     Dealership.prototype.setCapacity = function(newCapacity) {
-        this.price = newCapacity;
+        this.capacity = newCapacity;
     }
         
     Dealership.prototype.getDealershipName = function() {return this.dealershipName}
@@ -21,25 +21,39 @@ const Dealership = function(dealershipName, capacity){
 
 // Methods
 
-countCars = function() {
-    return this.capacity.length;
-}
+Dealership.prototype.countCars = function () {
+    return this.carsInStock.length;
+};
 
-function addCar(car) {
+Dealership.prototype.addCar = function(car) {
     if (this.carsInStock.length < this.capacity) {
         this.carsInStock.push(car);
+    } else {
+        throw new Error('Dealership is at full capacity');
     }
+};
+
+Dealership.prototype.getManufacturers = function() {
+    return this.carsInStock.map(car => car.manufacturer);
 }
 
-getManufacturers = () => {
-    return this.carsInStock.map(car => car.manufacturer)
+Dealership.prototype.getCarsByManufacturer = function(manufacturer) {
+    return this.carsInStock.filter(car => car.manufacturer === manufacturer);
 }
 
-// The above are three different ways in which you can call a function
-
-getTotalValueOfCars = function() {
+Dealership.prototype.getTotalValueOfCars = function() {
     return this.carsInStock.reduce((total, car) => total + car.price, 0);
 }
+
+
+// You can call a function through the below examples
+// countCars = function(){}
+// function countCars(){}
+// countCars = () => {}
+
+
+
+module.exports = Dealership;
 
 
 
