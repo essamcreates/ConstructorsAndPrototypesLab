@@ -4,7 +4,7 @@ const Car = function(manufacturer, price, engineType){
     this.engineType = engineType;
 }
 
-Car.prototype.setManufacturer = function(newManufacturer) {
+    Car.prototype.setManufacturer = function(newManufacturer) {
     this.manufacturer = newManufacturer;
     }
     
