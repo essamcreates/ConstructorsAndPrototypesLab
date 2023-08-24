@@ -18,3 +18,5 @@ describe('Car', () => {
     });
 }); 
  
+
+// TASK: Make changes to reflect DRY principles
